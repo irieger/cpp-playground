@@ -12,7 +12,7 @@ class OiioLinkingDemo(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
 
     package_type = 'library'
-    exports_sources = ['CMakeLists.txt', 'src']
+    exports_sources = ['CMakeLists.txt', 'src/main.cpp']
 
     options = {
         'shared': [True, False],
@@ -70,3 +70,7 @@ class OiioLinkingDemo(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
+
+    def package(self):
+        cmake = CMake(self)
+        cmake.install()

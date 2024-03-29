@@ -35,3 +35,6 @@
 ## Specific ignores
 oiio-conan-dynamic-linking/build
 CMakeUserPresets.json
+
+# For macOS temporary files
+.DS_Store
