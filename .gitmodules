@@ -1,3 +1,6 @@
 [submodule "oiio-conan-dynamic-linking/conan-center-index"]
 	path = oiio-conan-dynamic-linking/conan-center-index
 	url = https://github.com/irieger/conan-center-index.git
+[submodule "ocio-conan-dynamic-linking/conan-center-index"]
+	path = ocio-conan-dynamic-linking/conan-center-index
+	url = https://github.com/irieger/conan-center-index.git
