@@ -1,7 +1,12 @@
 # Sample project to demonstrate OCIO linking problems when building shared
 
 Building OCIO and all its dependencies as shared libraries creates linker problems when
-the OCIO tools are build. Here is an excerpt of the compiler errors:
+the OCIO tools are build.
+
+Uses a folder based conan repository instead of the official conan-center-index, as there the recipe
+is currently preventing a shared build.
+
+Here is an excerpt of the compiler errors:
 
 ```
 ...
