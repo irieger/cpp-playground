@@ -38,3 +38,6 @@ CMakeUserPresets.json
 
 # For macOS temporary files
 .DS_Store
+
+# Exclude build folders
+build
