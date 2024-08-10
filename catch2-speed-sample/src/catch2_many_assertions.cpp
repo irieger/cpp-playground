@@ -12,6 +12,10 @@ using namespace Catch::Matchers;
 constexpr size_t SAMPLE_SIZE {3 * 20 * 1024 * 1024};
 constexpr int32_t DELTA {20};
 
+// Switch this flag to run with every 65536th value failing or use false to succeed all checks
+constexpr bool RUN_FAILURE_CASE {false};
+
+
 TEST_CASE("SimpleTest")
 {
     std::vector<uint16_t> values_ref(SAMPLE_SIZE);
@@ -26,7 +30,14 @@ TEST_CASE("SimpleTest")
 
     for (size_t idx = 0; idx < SAMPLE_SIZE; ++idx)
     {
-        CHECK(std::abs(static_cast<int32_t>(values_ref[idx]) - static_cast<int32_t>(values_comp[idx])) < DELTA);
+        if constexpr (RUN_FAILURE_CASE)
+        {
+            CHECK(std::abs(static_cast<int32_t>(values_ref[idx]) - static_cast<int32_t>(values_comp[idx])) < DELTA);
+        }
+        else
+        {
+            CHECK(std::abs(static_cast<int32_t>(values_ref[idx]) - static_cast<int32_t>(values_comp[idx])));
+        }
     }
 
     // Not really working for vectors & ints, right?
