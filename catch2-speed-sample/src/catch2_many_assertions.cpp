@@ -1,8 +1,13 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
 
+#include <cmath>
 #include <cstdint>
 #include <vector>
+
+
+using namespace Catch::Matchers;
+
 
 constexpr size_t SAMPLE_SIZE {3 * 20 * 1024 * 1024};
 constexpr int32_t DELTA {20};
@@ -21,6 +26,9 @@ TEST_CASE("SimpleTest")
 
     for (size_t idx = 0; idx < SAMPLE_SIZE; ++idx)
     {
-        CHECK(static_cast<int32_t>(values_ref[idx]) - static_cast<int32_t>(values_comp[idx]) << DELTA);
+        CHECK(std::abs(static_cast<int32_t>(values_ref[idx]) - static_cast<int32_t>(values_comp[idx])) < DELTA);
     }
+
+    // Not really working for vectors & ints, right?
+    // CHECK_THAT(values_comp, WithinAbs(values_ref, DELTA));
 }
